@@ -339,8 +339,8 @@ endforeach()
 install(TARGETS ceres
         EXPORT  CeresExport
         RUNTIME DESTINATION bin
-        LIBRARY DESTINATION lib${LIB_SUFFIX}
-        ARCHIVE DESTINATION lib${LIB_SUFFIX})
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 if (BUILD_TESTING AND GFLAGS)
   add_library(gtest gmock_gtest_all.cc gmock_main.cc)

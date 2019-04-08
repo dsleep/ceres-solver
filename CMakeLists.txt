@@ -263,7 +263,7 @@ if (SUITESPARSE)
   # built with SuiteSparse support.
 
   # Check for SuiteSparse and dependencies.
-  find_package(SuiteSparse)
+  find_package(SuiteSparse REQUIRED)
   if (SUITESPARSE_FOUND)
     # On Ubuntu the system install of SuiteSparse (v3.4.0) up to at least
     # Ubuntu 13.10 cannot be used to link shared libraries.
@@ -285,6 +285,9 @@ if (SUITESPARSE)
     # built with SuiteSparse support.
     message("-- Found SuiteSparse ${SUITESPARSE_VERSION}, "
             "building with SuiteSparse.")
+	
+	include_directories(${SuiteSparse_INCLUDE_DIRS})	
+	
   else (SUITESPARSE_FOUND)
     # Disable use of SuiteSparse if it cannot be found and continue.
     message("-- Did not find all SuiteSparse dependencies, disabling "
@@ -697,6 +700,7 @@ endif ()
 # used in target_link_libraries() calls in the client project to use Ceres.
 install(EXPORT CeresExport
         DESTINATION ${RELATIVE_CMAKECONFIG_INSTALL_DIR} FILE CeresTargets.cmake)
+
 
 # Save the relative path from the installed CeresConfig.cmake file to the
 # install prefix.  We do not save an absolute path in case the installed package
