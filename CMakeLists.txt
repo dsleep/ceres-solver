@@ -733,6 +733,12 @@ install(FILES "${Ceres_BINARY_DIR}/CeresConfigVersion.cmake"
               "${Ceres_SOURCE_DIR}/cmake/FindGflags.cmake"
         DESTINATION ${RELATIVE_CMAKECONFIG_INSTALL_DIR})
 
+#UF - DS
+if (SUITESPARSE_FOUND)
+install(FILES "${Ceres_SOURCE_DIR}/cmake/FindSuiteSparse.cmake"
+        DESTINATION ${RELATIVE_CMAKECONFIG_INSTALL_DIR})
+endif (SUITESPARSE_FOUND)
+		
 # Create an uninstall target to remove all installed files.
 configure_file("${Ceres_SOURCE_DIR}/cmake/uninstall.cmake.in"
                "${Ceres_BINARY_DIR}/cmake/uninstall.cmake"
